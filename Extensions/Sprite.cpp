@@ -14,6 +14,31 @@
 ** Function name:           TFT_eSprite
 ** Description:             Class constructor
 ***************************************************************************************/
+TFT_eSprite::TFT_eSprite()
+{
+  _tft = nullptr;
+
+  _iwidth    = 0; // Initialise width and height to 0 (it does not exist yet)
+  _iheight   = 0;
+  _bpp = 16;
+  _swapBytes = false;   // Do not swap pushImage colour bytes by default
+
+  _created = false;
+  _vpOoB   = true;
+
+  _xs = 0;  // window bounds for pushColor
+  _ys = 0;
+  _xe = 0;
+  _ye = 0;
+
+  _xptr = 0; // pushColor coordinate
+  _yptr = 0;
+
+  _colorMap = nullptr;
+
+  _psram_enable = true;
+}
+
 TFT_eSprite::TFT_eSprite(TFT_eSPI *tft)
 {
   _tft = tft;     // Pointer to tft class so we can call member functions
@@ -99,8 +124,8 @@ void* TFT_eSprite::createSprite(int16_t w, int16_t h, uint8_t frames)
   {
     _created = true;
     rotation = 0;
-    setViewport(0, 0, _dwidth, _dheight);
-    setPivot(_iwidth/2, _iheight/2);
+    //setViewport(0, 0, _dwidth, _dheight);
+    //setPivot(_iwidth/2, _iheight/2);
     return _img8_1;
   }
 

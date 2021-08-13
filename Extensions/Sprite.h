@@ -9,7 +9,8 @@ class TFT_eSprite : public TFT_eSPI {
 
  public:
 
-  explicit TFT_eSprite(TFT_eSPI *tft);
+  TFT_eSprite();
+  TFT_eSprite(TFT_eSPI *tft);
   ~TFT_eSprite(void);
 
            // Create a sprite of width x height pixels, return a pointer to the RAM area
