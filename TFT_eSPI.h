@@ -410,8 +410,8 @@ class TFT_eSPI : public Print { friend class TFT_eSprite; // Sprite class has ac
 
 
   // The TFT_eSprite class inherits the following functions (not all are useful to Sprite class
-  void     setAddrWindow(int32_t xs, int32_t ys, int32_t w, int32_t h), // Note: start coordinates + width and height
-           setWindow(int32_t xs, int32_t ys, int32_t xe, int32_t ye);   // Note: start + end coordinates
+  void     setAddrWindow(uint32_t xs, uint32_t ys, uint32_t w, uint32_t h), // Note: start coordinates + width and height
+           setWindow(uint32_t xs, uint32_t ys, uint32_t xe, uint32_t ye);   // Note: start + end coordinates
 
   // Viewport commands, see "Viewport_Demo" sketch
   void     setViewport(int32_t x, int32_t y, int32_t w, int32_t h, bool vpDatum = true);
@@ -653,6 +653,8 @@ class TFT_eSPI : public Print { friend class TFT_eSprite; // Sprite class has ac
 
            // Push a block of pixels into a window set up using setAddrWindow()
   void     pushPixelsDMA(uint16_t* image, uint32_t len);
+
+  void     pushPixelsDMA(void* image, uint32_t len, uint32_t bpp);
 
            // Check if the DMA is complete - use while(tft.dmaBusy); for a blocking wait
   bool     dmaBusy(void); // returns true if DMA is still in progress

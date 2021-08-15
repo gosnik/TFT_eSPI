@@ -3022,7 +3022,7 @@ void TFT_eSPI::drawChar(int32_t x, int32_t y, uint16_t c, uint32_t color, uint32
 ** Description:             define an area to receive a stream of pixels
 ***************************************************************************************/
 // Chip select is high at the end of this function
-void TFT_eSPI::setAddrWindow(int32_t x0, int32_t y0, int32_t w, int32_t h)
+void TFT_eSPI::setAddrWindow(uint32_t x0, uint32_t y0, uint32_t w, uint32_t h)
 {
   begin_tft_write();
 
@@ -3037,7 +3037,7 @@ void TFT_eSPI::setAddrWindow(int32_t x0, int32_t y0, int32_t w, int32_t h)
 ** Description:             define an area to receive a stream of pixels
 ***************************************************************************************/
 // Chip select stays low, call begin_tft_write first. Use setAddrWindow() from sketches
-void TFT_eSPI::setWindow(int32_t x0, int32_t y0, int32_t x1, int32_t y1)
+void TFT_eSPI::setWindow(uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1)
 {
   //begin_tft_write(); // Must be called before setWindow
   addr_row = 0xFFFF;

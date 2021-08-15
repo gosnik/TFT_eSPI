@@ -625,6 +625,27 @@ void TFT_eSPI::pushPixelsDMA(uint16_t* image, uint32_t len)
   spiBusyCheck++;
 }
 
+void TFT_eSPI::pushPixelsDMA(void* image, uint32_t len, uint32_t bpp)
+{
+  if ((len == 0) || (!DMA_Enabled)) return;
+
+  dmaWait();
+
+  esp_err_t ret;
+  static spi_transaction_t trans;
+
+  memset(&trans, 0, sizeof(spi_transaction_t));
+
+  trans.user = (void *)1;
+  trans.tx_buffer = image;  //finally send the line data
+  trans.length = len * bpp;        //Data length, in bits
+  trans.flags = 0;                //SPI_TRANS_USE_TXDATA flag
+
+  ret = spi_device_queue_trans(dmaHAL, &trans, portMAX_DELAY);
+  assert(ret == ESP_OK);
+
+  spiBusyCheck++;
+}
 
 /***************************************************************************************
 ** Function name:           pushImageDMA
