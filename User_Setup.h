@@ -37,8 +37,8 @@
 
 // Only define one driver, the other ones must be commented out
 //#define ILI9341_DRIVER       // Generic driver for common displays
-//#define ILI9341_2_DRIVER     // Alternative ILI9341 driver, see https://github.com/Bodmer/TFT_eSPI/issues/1172
-#define ST7735_DRIVER      // Define additional parameters below for this display
+#define ILI9341_2_DRIVER     // Alternative ILI9341 driver, see https://github.com/Bodmer/TFT_eSPI/issues/1172
+//#define ST7735_DRIVER      // Define additional parameters below for this display
 //#define ILI9163_DRIVER     // Define additional parameters below for this display
 //#define S6D02A1_DRIVER
 //#define RPI_ILI9486_DRIVER // 20MHz maximum SPI
@@ -68,7 +68,7 @@
 // Try ONE option at a time to find the correct colour order for your display
 
 //  #define TFT_RGB_ORDER TFT_RGB  // Colour order Red-Green-Blue
-#define TFT_RGB_ORDER TFT_BGR  // Colour order Blue-Green-Red
+//#define TFT_RGB_ORDER TFT_BGR  // Colour order Blue-Green-Red
 
 // For M5Stack ESP32 module with integrated ILI9341 display ONLY, remove // in line below
 
@@ -76,10 +76,10 @@
 
 // For ST7789, ST7735, ILI9163 and GC9A01 ONLY, define the pixel width and height in portrait orientation
 // #define TFT_WIDTH  80
-#define TFT_WIDTH  128
+#define TFT_WIDTH  240
 // #define TFT_WIDTH  240 // ST7789 240 x 240 and 240 x 320
 // #define TFT_HEIGHT 160
-#define TFT_HEIGHT 128
+#define TFT_HEIGHT 320
 // #define TFT_HEIGHT 240 // ST7789 240 x 240
 // #define TFT_HEIGHT 320 // ST7789 240 x 320
 // #define TFT_HEIGHT 240 // GC9A01 240 x 240
@@ -92,7 +92,7 @@
 // this User_Setup file, then rebuild and upload the sketch to the board again:
 
 //#define ST7735_INITB
-#define ST7735_GREENTAB
+//#define ST7735_GREENTAB
 //#define ST7735_GREENTAB2
 //#define ST7735_GREENTAB3
 //#define ST7735_GREENTAB128    // For 128 x 128 display
@@ -223,6 +223,7 @@
 #define TFT_DC   27  // Data Command control pin
 #define TFT_RST  33  // Reset pin (could connect to Arduino RESET pin)
 #define TFT_BL   32  // LED back-light (required for M5Stack)
+#define TFT_ROT  1   // Rotation
 
 // ######       EDIT THE PINs BELOW TO SUIT YOUR ESP32 PARALLEL TFT SETUP        ######
 
@@ -320,9 +321,11 @@
 // #define SPI_FREQUENCY   1000000
 // #define SPI_FREQUENCY   5000000
 // #define SPI_FREQUENCY  10000000
-#define SPI_FREQUENCY  20000000
-//#define SPI_FREQUENCY  27000000
-// #define SPI_FREQUENCY  40000000
+// #define SPI_FREQUENCY  20000000
+// #define SPI_FREQUENCY  27000000
+//#define SPI_FREQUENCY  40000000
+//#define SPI_FREQUENCY  48000000
+#define SPI_FREQUENCY  78750000
 // #define SPI_FREQUENCY  55000000 // STM32 SPI1 only (SPI2 maximum is 27MHz)
 // #define SPI_FREQUENCY  80000000
 
